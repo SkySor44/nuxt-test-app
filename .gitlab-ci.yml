@@ -1,4 +1,7 @@
 build:
+  before_script:
+    - export PATH=$PATH:/usr/local/bin
+
   script:
     - npm install
     - pip install awscli
