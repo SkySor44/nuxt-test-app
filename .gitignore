@@ -89,5 +89,4 @@ sw.*
 # Vim swap files
 *.swp
 sendgrid.env
-.gitlab-ci.yml
 awscli-bundle*

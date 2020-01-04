@@ -1,0 +1,14 @@
+build:
+  script:
+    - npm install
+    - pip install awscli
+    - npm run generate
+
+deploy:
+  script:
+    - s3 cp ./dist/_nuxt s3://www.utahengagementphotos.com/_nuxt
+    - s3 cp ./dist/200.html s3://www.utahengagementphotos.com/200.html
+    - s3 cp ./dist/favicon.ico s3://www.utahengagementphotos.com/favicon.ico
+    - s3 cp ./dist/index.html s3://www.utahengagementphotos.com/index.html
+    - s3 cp ./dist/README.md s3://www.utahengagementphotos.com/README.md
+    - echo "Hello World"
