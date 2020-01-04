@@ -8,7 +8,7 @@
         <p>Description text</p>
         <input v-model="email" type="text" />
         <button @click="submitEmail">Submit</button>
-        <p>100% Secure. We Never Share Your Email test2</p>
+        <p>100% Secure. We Never Share Your Email test3</p>
       </div>
     </div>
   </div>
