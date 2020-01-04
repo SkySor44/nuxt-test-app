@@ -1,68 +1,77 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        test-app
-      </h1>
-      <h2 class="subtitle">
-        My mind-blowing Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <div class="lp-container">
+    <b-img src="../assets/TaylorAndLuke.jpg" class="background-image"></b-img>
+    <div class="overlay">
+      <div class="form-container">
+        <b-img />
+        <p>$150 Off 1.5 Hour Utah Engagements</p>
+        <p>Description text</p>
+        <input v-model="email" type="text" />
+        <button @click="submitEmail">Submit</button>
+        <p>100% Secure. We Never Share Your Email</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  name: 'LandingPage',
+  data() {
+    return {
+      email: ''
+    }
+  },
+  methods: {
+    submitEmail() {
+      this.$axios
+        .post('https://photo-lead-gen.herokuapp.com/leads/new', {
+          email: this.email
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }
   }
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+.lp-container {
+  width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
+  position: relative;
+}
+
+.background-image {
+  object-fit: cover;
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
+}
+
+.form-container {
+  width: 379px;
+  max-width: 100%;
+  height: 90%;
+  max-height: 90%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  justify-content: flex-start;
 }
 </style>
