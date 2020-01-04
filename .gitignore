@@ -90,3 +90,4 @@ sw.*
 *.swp
 sendgrid.env
 .gitlab-ci.yml
+awscli-bundle*
