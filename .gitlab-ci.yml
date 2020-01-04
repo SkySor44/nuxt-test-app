@@ -1,13 +1,14 @@
 build:
+  image: node:6
   before_script:
     - export PATH=$PATH:/usr/local/bin
-
   script:
     - npm install
     - pip install awscli
     - npm run generate
 
 deploy:
+  image: node:6
   script:
     - s3 cp ./dist/_nuxt s3://www.utahengagementphotos.com/_nuxt
     - s3 cp ./dist/200.html s3://www.utahengagementphotos.com/200.html
